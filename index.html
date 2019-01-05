@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="shortcut icon" href="static/images/fav.ico">
+    <title>荣耀百科</title>
+    <style>
+        iframe {
+            display: none;
+        }
+    </style>
+    <script>
+        const app_width = 375;
+
+        // 设置字体大小
+        function setFontSize() {
+            let width = window.innerWidth;
+            if (width > app_width) {
+                width = app_width;
+            }
+            // 获取默认fontsize
+            const doc = document.querySelector('html');
+            const fontSize = parseFloat(window.getComputedStyle(doc).fontSize) || 16;
+            const x = width * 16 / (20 * fontSize);
+            doc.style.fontSize = x + "px";
+        }
+
+        function getAgent() {
+            const agent = window.navigator.userAgent.toLowerCase();
+            return !(agent.indexOf('android') !== -1 || agent.indexOf('iphone') !== -1);
+        }
+
+        setFontSize();
+        if (getAgent()) {
+            alert('手机访问效果更佳');
+        }
+    </script>
+</head>
+
+<body style="user-select: none">
+    <div id="app"></div>
+</body>
+
+</html>
