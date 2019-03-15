@@ -1,6 +1,8 @@
 <template>
     <div class="m-header">
+        <!-- 是否显示返回按钮 -->
         <div class="btn-back" v-if="show_back" @click="back"></div>
+        <!-- 是否显示搜索按钮 -->
         <div v-if="show_search">
             <label>
                 <input v-if="show_search" type="text" v-model="input">
@@ -9,6 +11,7 @@
         </div>
         <div v-else>
             <div class="text" :class="{'left':!mid}" v-html="title"></div>
+            <!-- 是否显示关于按钮 -->
             <div class="btn-about" v-if="show_about" @click="about"></div>
         </div>
     </div>
@@ -21,12 +24,12 @@
         name: 'm_header',
         data() {
             return {
-                show_back: false,
-                title: '荣耀百科',
-                mid: true,
-                input: '',
-                show_search: false,
-                show_about: true
+                show_back: false,   // 是否显示返回按钮
+                title: "荣耀百科",   // 显示的标题内容
+                mid: true,          //是否居中显示
+                input: "",          // 输入内容
+                show_search: false, // 是否显示搜索按钮
+                show_about: true    // 是否显示关于按钮
             }
         },
         mounted() {
