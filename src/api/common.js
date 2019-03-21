@@ -32,6 +32,14 @@ function common(router) {
 
     // 获取最新周免英雄
     router.get('/api/common/getweek', (req, res) => {
+        // 记录访问设备
+        const agent = req.headers["user-agent"] || "unknown device";
+        let arr = req.connection.remoteAddress.split(':');
+        const ip = arr[arr.length - 1];
+        handler.exec({
+            sql: `insert into visits (ip,agent,time) values (?,?,?)`,
+            params: [ip, agent, new Date().getTime()]
+        });
         let url = 'https://pvp.qq.com/web201605/js/herolist.json';
         axios.get(url).then(r => {
             let rows = [];
