@@ -13,21 +13,6 @@ import axios from "axios";
 
 export default {
     name: "App",
-    created() {
-        this._visit();
-    },
-    methods: {
-        /**
-         * 增加访问
-         */
-        _visit() {
-            axios.get(`/api/common/visit`, {
-                params: {
-                    agent: encodeURIComponent(navigator.userAgent)
-                }
-            });
-        }
-    },
     components: {
         MHeader,
         Alert
